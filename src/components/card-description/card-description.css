@@ -1,0 +1,14 @@
+.round{
+  position: absolute;
+    top: 5px;
+    right: 10px;
+    border-radius: 50%;
+
+    color: black;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:9px;
+}

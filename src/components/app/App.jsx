@@ -5,6 +5,7 @@ import lodash from 'lodash';
 import MovieApi from '../../movie-api/movieApi';
 import { GenresProvider } from '../../movie-api/apiContext';
 import MainContent from '../main-content/MainContent';
+import { getRatingHelper, rateHelper } from '../../rate-helper/rateHelper';
 
 const { Content } = Layout;
 const movieApi = new MovieApi();
@@ -22,6 +23,7 @@ const App = () => {
 
   function returnMoviesObj(loadedMovies, name, page = 1) {
     if (name === 'movies') {
+      const ratingObj = getRatingHelper();
       setSearchMovies({
         elements: loadedMovies.results.map((movie) => {
           let imageSrc = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -35,7 +37,7 @@ const App = () => {
             rate: movie.vote_average,
             id: movie.id,
             releaseDate: movie.release_date,
-            rating: movie.rating,
+            rating: ratingObj[`${movie.id}`],
             genreIds: movie.genre_ids,
           };
         }),
@@ -44,6 +46,7 @@ const App = () => {
       });
       setIsloading(false);
     } else {
+      
       setRatedMovies({
         elements: loadedMovies.results.map((movie) => {
           let imageSrc = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -124,7 +127,9 @@ const App = () => {
   }, [setMoviesFunc]);
 
   const handleRate = (id, rating) => {
-    movieApi.rateMovie(id, rating);
+    movieApi.rateMovie(id, rating).then(() => {
+      rateHelper(id, rating);
+    });
   };
 
   const onSearch = useCallback(
@@ -165,6 +170,7 @@ const App = () => {
             <Menu.Item key="rated">Rated</Menu.Item>
           </Menu>
           <div>
+            
             {isSearch ? <Input value={inputValue} style={{ marginBottom: '20px' }} onChange={inputOnChange} /> : null}
             <GenresProvider value={genres}>
               <MainContent
@@ -180,6 +186,7 @@ const App = () => {
                 onSearch={onSearch}
               />
             </GenresProvider>
+            
           </div>
         </div>
       </Content>

@@ -4,20 +4,60 @@ body {
 }
 .site-layout-content {
   min-height: 100vh;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   padding: 20px 15px;
   background: #fff;
 }
+.movie-desc{
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.movie-date{
+  color: rgb(130, 126, 126);
+  font-size: 8px;
+  margin-bottom: 5px;
+}
+
+.cover-img{
+  width: auto;
+  height: 100%
+}
+
 .ant-card-body {
   padding: 12px 20px;
   width: 80%;
   position: relative;
 }
-
+.rate{
+position:absolute;
+  bottom:5px;
+  right:5px;
+  width:100%;
+  text-align:center;}
+.movie-genre{
+  height: 20px;
+  line-height: 10px;
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 3px;
+  text-transform: capitalize;
+  background: #FAFAFA;
+  margin-right: 8px;
+  margin-bottom: 5px;
+}
 .ant-rate {
   font-size: 8px;
 }
+.movie-title {
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: capitalize;
+  margin-bottom: 2px;
+  padding-right: 30px;
+};
+
 
 @media (min-width: 1300px) {
   .ant-rate {
@@ -27,7 +67,7 @@ body {
 @media (min-width: 800px) {
   .site-layout-content {
     min-height: 100vh;
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
     padding: 20px 35px;
     background: #fff;
