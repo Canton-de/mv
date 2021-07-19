@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import CardDescription from '../card-description/CardDescription';
 import './movies.css'
-import cutString from "../../hepers/cutString";
+import cutString from "../../helpers/cutString";
 
 const Movies = ({ movies, windowWidth, handleRate, isSearch, page, handleChangePage, count }) => (
   <>
